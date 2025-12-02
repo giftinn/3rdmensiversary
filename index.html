@@ -206,7 +206,7 @@ body {
       top: 20px;
       left: 20px;
       font-size: 24px;
-      color: #8b0000;
+      color: black;
       animation: spin 8s linear infinite;
     }
     
@@ -214,7 +214,7 @@ body {
       bottom: 20px;
       right: 20px;
       font-size: 24px;
-      color: #8b0000;
+      color: black;
       animation: spin 8s linear infinite reverse;
     }
     
@@ -300,24 +300,40 @@ body {
       <div class="decoration decoration-bottom-right">🕷️</div>
       <img src="pict.jpg" alt="Girlfriend's Photo" class="girlfriend-photo">
       <div class="message-text">
-        <p>Happy 3rd mensive to us!
-          
-Crazy how it’s only been three months, but it somehow feels like you’ve been stuck in my head way longer than that (not complaining… maybe a little). You make my days feel lighter, and honestly, i kinda like the way you ruin my peace in the cutest way possible.
-          
-These three months have been full of your jokes, your random moods, your sweet moments, and all the little things that somehow turned into my favorite parts of the day. i love how everything with you feels natural, like effortless but still special. You make even the boring days feel less boring, and i appreciate that a lot more than you think.
-          
-And honestly, i’m glad it’s you. Out of everyone, it’s your presence, your chaos, and your soft side (yang kadang-kadang muncul itu) that i ended up getting attached to. I don’t know how you did it, but somehow you became my favorite person to talk to, tease, and miss. So yeah… thanks for being you and for sticking around these past three months.
-
-So, happy mensive, love.
-Here’s to us with our chaos, our laughs, our late-night talks, and all the tiny moments that accidentally made me care about you this much.
-Let’s keep going, okay? Three months down, many more to go (if you’re still wimme, ya)
-          
-    </p></div>
+        id="typewriter"</div>
       <div class="hearts" id="hearts5"></div>
     </div>
   </div>
 
   <script>
+const textToType = `Happy 3rd mensive to us!
+
+Crazy how it’s only been three months, but it somehow feels like you’ve been stuck in my head way longer than that (not complaining… maybe a little). You make my days feel lighter, and honestly, i kinda like the way you ruin my peace in the cutest way possible.
+
+These three months have been full of your jokes, your random moods, your sweet moments, and all the little things that somehow turned into my favorite parts of the day. i love how everything with you feels natural, like effortless but still special. You make even the boring days feel less boring, and i appreciate that a lot more than you think.
+
+And honestly, i’m glad it’s you. Out of everyone, it’s your presence, your chaos, and your soft side (yang kadang-kadang muncul itu) that i ended up getting attached to. I don’t know how you did it, but somehow you became my favorite person to talk to, tease, and miss. So yeah… thanks for being you and for sticking around these past three months.
+
+So, happy mensive, love.
+Here’s to us with our chaos, our laughs, our late-night talks, and all the tiny moments that accidentally made me care about you this much.
+Let’s keep going, okay? Three months down, many more to go (if you’re still wimme, ya)
+`;
+
+function typeWriterEffect() {
+  const element = document.getElementById("typewriter");
+  let index = 0;
+
+  const typingInterval = setInterval(() => {
+    if (index < textToType.length) {
+      element.textContent += textToType[index];
+      index++;
+    } else {
+      clearInterval(typingInterval);
+    }
+  }, 25);
+}
+
+    
 function showPage(pageId) {
       // Hide all pages
       document.querySelectorAll('.page').forEach(page => {
