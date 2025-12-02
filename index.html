@@ -318,12 +318,25 @@ Let’s keep going, okay? Three months down, many more to go (if you’re still 
   </div>
 
   <script>
-    // Function to show a specific page and hide others
-    function showPage(pageId) {
+function showPage(pageId) {
       // Hide all pages
       document.querySelectorAll('.page').forEach(page => {
         page.style.display = 'none';
       });
+      
+      // Show the selected page with a fade-in effect
+      const selectedPage = document.getElementById(pageId);
+      selectedPage.style.display = 'flex';
+      selectedPage.style.opacity = '0';
+      
+      setTimeout(() => {
+        selectedPage.style.transition = 'opacity 0.5s ease';
+        selectedPage.style.opacity = '1';
+      }, 100);
+      
+      // Create floating hearts for the current page
+      createHearts(pageId);
+    }
       
       // Show the selected page with a fade-in effect
       const selectedPage = document.getElementById(pageId);
