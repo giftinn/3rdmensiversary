@@ -305,7 +305,7 @@ body {
     </div>
   </div>
 
-  <script>
+<script>
 const textToType = `Happy 3rd mensive to us!
 
 Crazy how it’s only been three months, but it somehow feels like you’ve been stuck in my head way longer than that (not complaining… maybe a little). You make my days feel lighter, and honestly, i kinda like the way you ruin my peace in the cutest way possible.
@@ -321,6 +321,7 @@ Let’s keep going, okay? Three months down, many more to go (if you’re still 
 
 function typeWriterEffect() {
   const element = document.getElementById("typewriter");
+  element.textContent = "";
   let index = 0;
 
   const typingInterval = setInterval(() => {
@@ -333,103 +334,70 @@ function typeWriterEffect() {
   }, 25);
 }
 
-if(pageId === 'page5'){
-  setTimeout(typeWriterEffect, 500);
+// Show a specific page and hide the others
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.style.display = 'none';
+  });
+
+  const selectedPage = document.getElementById(pageId);
+  selectedPage.style.display = 'flex';
+  selectedPage.style.opacity = '0';
+
+  setTimeout(() => {
+    selectedPage.style.transition = 'opacity 0.5s ease';
+    selectedPage.style.opacity = '1';
+  }, 100);
+
+  // Create hearts for page
+  createHearts(pageId);
+
+  // Trigger typing when reaching page5
+  if (pageId === 'page5') {
+    setTimeout(typeWriterEffect, 800);
+  }
 }
-    
-    // Function to show a specific page and hide others
-    function showPage(pageId) {
-      // Hide all pages
-      document.querySelectorAll('.page').forEach(page => {
-        page.style.display = 'none';
-      });
-      
-      // Show the selected page with a fade-in effect
-      const selectedPage = document.getElementById(pageId);
-      selectedPage.style.display = 'flex';
-      selectedPage.style.opacity = '0';
-      
-      setTimeout(() => {
-        selectedPage.style.transition = 'opacity 0.5s ease';
-        selectedPage.style.opacity = '1';
-      }, 100);
-      
-      // Create floating hearts for the current page
-      createHearts(pageId);
-    }
 
-    // Function to create floating hearts
-    function createHearts(pageId) {
-      const heartsContainer = document.getElementById('hearts' + pageId.substring(4));
-      heartsContainer.innerHTML = '';
-      
-      for (let i = 0; i < 80; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.bottom = Math.random() * 100 + '%';
-        heart.style.opacity = 0;
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        heart.style.transform = `scale(${0.5 + Math.random()}) rotate(45deg)`;
-        heartsContainer.appendChild(heart);
-      }
-    }
+// Floating hearts
+function createHearts(pageId) {
+  const heartsContainer = document.getElementById('hearts' + pageId.substring(4));
+  heartsContainer.innerHTML = '';
 
-    // Add confetti effect to the final message
-    function addConfetti() {
-      const confettiContainer = document.createElement('div');
-      confettiContainer.style.position = 'absolute';
-      confettiContainer.style.width = '100%';
-      confettiContainer.style.height = '100%';
-      confettiContainer.style.top = '0';
-      confettiContainer.style.left = '0';
-      confettiContainer.style.pointerEvents = 'none';
-      confettiContainer.style.zIndex = '-1';
-      
-        
-        const keyframes = `
-          @keyframes confettiFall {
-            0% { transform: translateY(-10px) rotate(0deg); }
-            100% { transform: translateY(${window.innerHeight}px) rotate(360deg); }
-          }
-        `;
-        
-        const styleSheet = document.createElement('style');
-        styleSheet.innerText = keyframes;
-        document.head.appendChild(styleSheet);
-        
-        confettiContainer.appendChild(confetti);
-      }
-    }
+  for (let i = 0; i < 80; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.bottom = Math.random() * 100 + '%';
+    heart.style.opacity = 0;
+    heart.style.animationDelay = Math.random() * 5 + 's';
+    heart.style.transform = `scale(${0.5 + Math.random()}) rotate(45deg)`;
+    heartsContainer.appendChild(heart);
+  }
+}
 
-    // Initialize hearts on the first page
-    window.onload = function() {
-      createHearts('page1');
-      
-      // Add event listener for the final page
-      document.querySelector('button[onclick="showPage(\'page5\')"]').addEventListener('click', function() {
-        setTimeout(addConfetti, 100);
-      });
-    };
+function checkPassword() {
+  const pwd = document.getElementById('passwordInput').value;
+  const correctPassword = "nasigoreng";
 
-    function checkPassword() {
-        const pwd = document.getElementById('passwordInput').value;
-        const correctPassword = "nasigoreng";
-    
-        if(pwd === correctPassword){
-            playMusic();
-            showPage('page2');
-        } else {
-            alert("Wrong password! try again baby");
-        }
-    }
+  if (pwd === correctPassword) {
+    playMusic();
+    showPage('page2');
+  } else {
+    alert("Wrong password! try again baby");
+  }
+}
 
-    function playMusic(){
-        const music = document.getElementById("bgmusic");
-        music.volume = 0.9; 
-        music.play();
-    }
-  </script>
+function playMusic(){
+  const music = document.getElementById("bgmusic");
+  music.volume = 0.9;
+  music.play();
+}
+
+window.onload = function() {
+  createHearts('page1');
+};
+</script>
+
 </body>
 
 </html>
