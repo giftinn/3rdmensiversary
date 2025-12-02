@@ -75,9 +75,9 @@ body {
     }
 
     h1, h2 {
-      color: #7b0000;
+      color: black;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(255, 102, 153, 0.3);
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
       font-weight: 600;
       letter-spacing: 1px;
     }
@@ -85,7 +85,7 @@ body {
     .melody-character {
       width: 200px;
       margin-bottom: 30px;
-      filter: drop-shadow(0 5px 10px rgba(255, 102, 153, 0.4));
+      filter: drop-shadow(0 5px 10px rgba(255, 255, 255, 0.3));
       animation: bounce 2s infinite;
     }
     
@@ -162,8 +162,8 @@ body {
       height: auto;
       border-radius: 15px;
       margin-bottom: 20px;
-      border: 3px solid #7b0000;
-      box-shadow: 0 8px 20px rgba(255, 102, 153, 0.3);
+      border: 3px solid white;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
       transition: transform 0.3s;
     }
     
@@ -175,58 +175,12 @@ body {
       white-space: pre-line;
       text-align: left;
       line-height: 1.6;
-      color: #333;
+      color: black;
+      font-weight: bold;
       background-color: rgba(255, 230, 240, 0.3);
       padding: 15px;
       border-radius: 12px;
       border: 1px solid #8b0000;
-    }
-
-    .hearts {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .heart {
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background-color: #7b0000;
-      transform: rotate(45deg);
-      opacity: 0;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .heart:before,
-    .heart:after {
-      content: '';
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background-color: #7b0000;
-      border-radius: 50%;
-    }
-
-    .heart:before {
-      top: -7.5px;
-      left: 0;
-    }
-
-    .heart:after {
-      left: -7.5px;
-      top: 0;
-    }
-    
-    .heart:nth-child(odd) {
-      background-color: #8b0000;
-    }
-    
-    .heart:nth-child(odd):before,
-    .heart:nth-child(odd):after {
-      background-color: #8b0000;
     }
 
     @keyframes float {
@@ -414,19 +368,6 @@ Let’s keep going, okay? Three months down, many more to go (if you’re still 
       confettiContainer.style.zIndex = '-1';
       
       document.getElementById('page5').appendChild(confettiContainer);
-      
-      for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.style.position = 'absolute';
-        confetti.style.width = '10px';
-        confetti.style.height = '10px';
-        confetti.style.backgroundColor = i % 2 === 0 ? '#ff6699' : '#ffffff';
-        confetti.style.borderRadius = i % 3 === 0 ? '50%' : '0';
-        confetti.style.top = '-10px';
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.opacity = Math.random() * 0.7 + 0.3;
-        confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear infinite`;
-        confetti.style.animationDelay = Math.random() * 5 + 's';
         
         const keyframes = `
           @keyframes confettiFall {
