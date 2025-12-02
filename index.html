@@ -275,6 +275,9 @@ body {
   </style>
 </head>
 <body>
+   <audio id="bgmusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+   </audio>
   <!-- Page 1: Welcome Page with My Melody -->
   <div id="page1" class="page">
     <div class="page-content">
@@ -283,7 +286,10 @@ body {
       <img src="spidey.png" alt="My Melody" class="melody-character">
       <h1>Happy 26th Birthday!</h1>
       <div class="hearts" id="hearts1"></div>
-      <button class="btn" onclick="showPage('page2')">Continue</button>
+      <input type="password" id="passwordInput" placeholder="Enter password..." 
+        style="padding: 12px; border: 2px solid #ff6699; border-radius: 15px; font-size: 16px; margin-bottom: 15px; text-align:center;">
+
+       <button class="btn" onclick="checkPassword()">Continue</button>
     </div>
   </div>
 
@@ -446,6 +452,24 @@ Let’s keep going, okay? Three months down, many more to go (if you’re still 
         setTimeout(addConfetti, 100);
       });
     };
+
+    function checkPassword() {
+        const pwd = document.getElementById('passwordInput').value;
+        const correctPassword = "loveu";
+    
+        if(pwd === correctPassword){
+            playMusic();
+            showPage('page2');
+        } else {
+            alert("Wrong password! try again baby");
+        }
+    }
+
+    function playMusic(){
+        const music = document.getElementById("bgmusic");
+        music.volume = 0.9; 
+        music.play();
+    }
   </script>
 </body>
 
