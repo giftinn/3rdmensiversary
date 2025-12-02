@@ -77,7 +77,7 @@ body {
     h1, h2 {
       color: black;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+      text-shadow: 2px 2px 4px white;
       font-weight: 600;
       letter-spacing: 1px;
     }
@@ -85,7 +85,7 @@ body {
     .melody-character {
       width: 200px;
       margin-bottom: 30px;
-      filter: drop-shadow(0 5px 10px rgba(255, 255, 255, 0.3));
+      filter: drop-shadow(0 5px 10px white);
       animation: bounce 2s infinite;
     }
     
@@ -108,7 +108,7 @@ body {
       margin-bottom: 30px;
       position: relative;
       background-image: linear-gradient(to bottom, #ffe6f0 0%, #fff 100%);
-      box-shadow: 0 5px 15px rgba(255, 102, 153, 0.2);
+      box-shadow: 0 5px 15px white;
     }
 
     .chat-box:after {
@@ -121,7 +121,7 @@ body {
       height: 0;
       border-left: 15px solid transparent;
       border-right: 15px solid transparent;
-      border-top: 15px solid #8b0000;
+      border-top: 15px solid black;
     }
 
     .button-container {
@@ -145,7 +145,7 @@ body {
     }
 
     .btn:hover {
-      background-color: #7b0000;
+      background-color: black;
       transform: scale(1.05);
       box-shadow: 0 6px 12px rgba(255, 102, 153, 0.4);
     }
@@ -154,7 +154,8 @@ body {
       white-space: pre-line;
       text-align: left;
       line-height: 1.6;
-      color: #333;
+      color: black;
+      font-weight: bold;
     }
 
     .girlfriend-photo {
@@ -180,7 +181,7 @@ body {
       background-color: rgba(255, 230, 240, 0.3);
       padding: 15px;
       border-radius: 12px;
-      border: 1px solid #8b0000;
+      border: 1px solid black;
     }
 
     @keyframes float {
@@ -300,7 +301,7 @@ body {
       <div class="decoration decoration-bottom-right">🕷️</div>
       <img src="pict.jpg" alt="Girlfriend's Photo" class="girlfriend-photo">
       <div class="message-text">
-        id="typewriter"</div>
+        <p id="typewriter"></p></div>
       <div class="hearts" id="hearts5"></div>
     </div>
   </div>
